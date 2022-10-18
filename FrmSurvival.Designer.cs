@@ -32,8 +32,8 @@ namespace gameparkerjames
             this.components = new System.ComponentModel.Container();
             this.PnlGame = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuStop = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LblGame = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,6 +43,7 @@ namespace gameparkerjames
             this.label3 = new System.Windows.Forms.Label();
             this.LblLives = new System.Windows.Forms.Label();
             this.TmrBullet = new System.Windows.Forms.Timer(this.components);
+            this.TmrPlayer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,8 +61,8 @@ namespace gameparkerjames
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.Gray;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem,
-            this.stopToolStripMenuItem,
+            this.MnuStart,
+            this.MnuStop,
             this.resetToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -69,29 +70,31 @@ namespace gameparkerjames
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // startToolStripMenuItem
+            // MnuStart
             // 
-            this.startToolStripMenuItem.AutoSize = false;
-            this.startToolStripMenuItem.BackColor = System.Drawing.Color.Silver;
-            this.startToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.startToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.startToolStripMenuItem.MergeIndex = 0;
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(60, 30);
-            this.startToolStripMenuItem.Text = "Start";
+            this.MnuStart.AutoSize = false;
+            this.MnuStart.BackColor = System.Drawing.Color.Silver;
+            this.MnuStart.ForeColor = System.Drawing.Color.Black;
+            this.MnuStart.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.MnuStart.MergeIndex = 0;
+            this.MnuStart.Name = "MnuStart";
+            this.MnuStart.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
+            this.MnuStart.Size = new System.Drawing.Size(60, 30);
+            this.MnuStart.Text = "Start";
+            this.MnuStart.Click += new System.EventHandler(this.MnuStart_Click);
             // 
-            // stopToolStripMenuItem
+            // MnuStop
             // 
-            this.stopToolStripMenuItem.AutoSize = false;
-            this.stopToolStripMenuItem.BackColor = System.Drawing.Color.Silver;
-            this.stopToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.stopToolStripMenuItem.Margin = new System.Windows.Forms.Padding(10);
-            this.stopToolStripMenuItem.MergeIndex = 0;
-            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(60, 30);
-            this.stopToolStripMenuItem.Text = "Stop";
+            this.MnuStop.AutoSize = false;
+            this.MnuStop.BackColor = System.Drawing.Color.Silver;
+            this.MnuStop.ForeColor = System.Drawing.Color.Black;
+            this.MnuStop.Margin = new System.Windows.Forms.Padding(10);
+            this.MnuStop.MergeIndex = 0;
+            this.MnuStop.Name = "MnuStop";
+            this.MnuStop.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
+            this.MnuStop.Size = new System.Drawing.Size(60, 30);
+            this.MnuStop.Text = "Stop";
+            this.MnuStop.Click += new System.EventHandler(this.MnuStop_Click);
             // 
             // resetToolStripMenuItem
             // 
@@ -173,13 +176,19 @@ namespace gameparkerjames
             this.LblLives.Name = "LblLives";
             this.LblLives.Size = new System.Drawing.Size(80, 30);
             this.LblLives.TabIndex = 8;
-            this.LblLives.Text = "5";
+            this.LblLives.Text = "10";
             this.LblLives.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TmrBullet
             // 
             this.TmrBullet.Enabled = true;
             this.TmrBullet.Tick += new System.EventHandler(this.TmrBullet_Tick);
+            // 
+            // TmrPlayer
+            // 
+            this.TmrPlayer.Enabled = true;
+            this.TmrPlayer.Interval = 50;
+            this.TmrPlayer.Tick += new System.EventHandler(this.TmrPlayer_Tick);
             // 
             // Survival
             // 
@@ -196,9 +205,13 @@ namespace gameparkerjames
             this.Controls.Add(this.PnlGame);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Survival";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.Survival_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Survival_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Survival_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -210,8 +223,8 @@ namespace gameparkerjames
 
         private System.Windows.Forms.Panel PnlGame;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MnuStart;
+        private System.Windows.Forms.ToolStripMenuItem MnuStop;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.Label LblGame;
         private System.Windows.Forms.Label label1;
@@ -221,6 +234,7 @@ namespace gameparkerjames
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label LblLives;
         private System.Windows.Forms.Timer TmrBullet;
+        private System.Windows.Forms.Timer TmrPlayer;
     }
 }
 

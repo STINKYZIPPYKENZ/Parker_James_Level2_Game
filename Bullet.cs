@@ -34,7 +34,7 @@ namespace gameparkerjames
         }
         public void MoveBullet()
         {
-            y += 5;
+            
 
             bulletRec.Location = new Point(x, y);
         }

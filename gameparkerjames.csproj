@@ -53,6 +53,7 @@
     <Compile Include="FrmSurvival.Designer.cs">
       <DependentUpon>FrmSurvival.cs</DependentUpon>
     </Compile>
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmSurvival.resx">
@@ -83,6 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\pixil-frame-0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pixil-frame-0 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
