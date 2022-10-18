@@ -34,7 +34,6 @@ namespace gameparkerjames
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MnuStart = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuStop = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LblGame = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtName = new System.Windows.Forms.TextBox();
@@ -62,8 +61,7 @@ namespace gameparkerjames
             this.menuStrip1.BackColor = System.Drawing.Color.Gray;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuStart,
-            this.MnuStop,
-            this.resetToolStripMenuItem});
+            this.MnuStop});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(700, 50);
@@ -95,19 +93,6 @@ namespace gameparkerjames
             this.MnuStop.Size = new System.Drawing.Size(60, 30);
             this.MnuStop.Text = "Stop";
             this.MnuStop.Click += new System.EventHandler(this.MnuStop_Click);
-            // 
-            // resetToolStripMenuItem
-            // 
-            this.resetToolStripMenuItem.AutoSize = false;
-            this.resetToolStripMenuItem.BackColor = System.Drawing.Color.Silver;
-            this.resetToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.resetToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.resetToolStripMenuItem.MergeIndex = 0;
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.resetToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(60, 30);
-            this.resetToolStripMenuItem.Text = "Reset";
             // 
             // LblGame
             // 
@@ -225,7 +210,6 @@ namespace gameparkerjames
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MnuStart;
         private System.Windows.Forms.ToolStripMenuItem MnuStop;
-        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.Label LblGame;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtName;

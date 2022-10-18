@@ -80,8 +80,9 @@ namespace gameparkerjames
 
         private void Survival_Load(object sender, EventArgs e)
         {
-            // pass lives from LblLives Text property to lives variable
-            lives = int.Parse(LblLives.Text);
+            MessageBox.Show("Use the left, right, up and down arrow keys to move the player. \n Don't get hit by the bullets! \n Every bullet that gets past scores a point. \n If a bullet hits a player a life is lost! \n \n Enter your Name \n Click Start to begin", "Game Instructions");
+            TxtName.Focus();
+
         }
 
         private void MnuStart_Click(object sender, EventArgs e)
