@@ -18,10 +18,10 @@ namespace gameparkerjames
         //Create a constructor (initialises the values of the fields)
         public Player()
         {
-            x = 10;
-            y = 360;
-            width = 60;
-            height = 80;
+            x = 300;
+            y = 300;
+            width = 40;
+            height = 50;
             player = Properties.Resources.surviver1;
             playerRec = new Rectangle(x, y, width, height);
         }

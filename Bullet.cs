@@ -18,10 +18,10 @@ namespace gameparkerjames
         //Create a constructor (initialises the values of the fields)
         public Bullet(int spacing)
         {
-            x = spacing;
-            y = 10;
-            width = 30;
-            height = 25;
+            x = -200;
+            y = spacing;
+            width = 20;
+            height = 20;
             //bulletImage contains the bullet1.png image
             bulletImage = Properties.Resources.bullet1;
             bulletRec = new Rectangle(x, y, width, height);

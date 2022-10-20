@@ -14,8 +14,8 @@ namespace gameparkerjames
     public partial class Survival : Form
     {
         Graphics g; //declare a graphics object called g
-                    // declare space for an array of 10 objects called bullet 
-        Bullet[] bullet = new Bullet[10];
+                    // declare space for an array of 7 objects called bullet 
+        Bullet[] bullet = new Bullet[7];
         Random yspeed = new Random();
         Player player = new Player();
         bool left, right, up, down;
@@ -25,9 +25,9 @@ namespace gameparkerjames
         public Survival()
         {
             InitializeComponent();            
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 7; i++)
             {
-                int x = 10 + (i * 55);
+                int x = 10 + (i * 70);
                 bullet[i] = new Bullet(x);
             }
 
@@ -38,11 +38,11 @@ namespace gameparkerjames
             //get the graphics used to paint on the panel control
             g = e.Graphics;
             //call the Bullet class's DrawBullet method to draw the image bullet1 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 7; i++)
             {
-                // generate a random number from 7 to 14 and put it in rndmspeed
-                int rndmspeed = yspeed.Next(7, 14);
-                bullet[i].y += rndmspeed;
+                // generate a random number from 8 to 16 and put it in rndmspeed
+                int rndmspeed = yspeed.Next(8, 16);
+                bullet[i].x += rndmspeed;
                 //call the Bullet class's drawBullet method to draw the images
                 bullet[i].DrawBullet(g);
                 player.DrawPlayer(g);
@@ -53,25 +53,28 @@ namespace gameparkerjames
 
         private void TmrBullet_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 7; i++)
             {
                 bullet[i].MoveBullet();
 
-                //if a bullet reaches the bottom of the Game Area reposition it at a random postion on the top, side or bottom
-                if (bullet[i].y >= PnlGame.Height)
+                //if a bullet reaches the right side of the Game Area it is repositiond at the left side.
+                if (bullet[i].x >= PnlGame.Height)
                 {
                     score += 1;//update the score
                     LblScore.Text = score.ToString();// display score
-                    bullet[i].y = 30;
-                   
+                    bullet[i].x = -300;
+                    int rndmspeed = yspeed.Next(8, 18);
+                    bullet[i].x += rndmspeed;
                 }
                 if (player.playerRec.IntersectsWith(bullet[i].bulletRec))
                 {
-                    //reset bullet[i] back to top of panel
-                    bullet[i].y = 30; // set  y value of bulletRec
+                    //reset bullet[i] back to side of panel
+                    bullet[i].x = -600; // set  x value of bulletRec
                     lives -= 1;// lose a life
                     LblLives.Text = lives.ToString();// display number of lives
                     CheckLives();
+                    int rndmspeed = yspeed.Next(8, 17);
+                    bullet[i].x += rndmspeed;
                 }
 
             }
@@ -100,6 +103,11 @@ namespace gameparkerjames
         {
             TmrBullet.Enabled = false;
             TmrPlayer.Enabled = false;
+        }
+
+        private void LblScore_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void Survival_KeyDown(object sender, KeyEventArgs e)

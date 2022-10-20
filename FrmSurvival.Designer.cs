@@ -143,6 +143,7 @@ namespace gameparkerjames
             this.LblScore.TabIndex = 6;
             this.LblScore.Text = "0";
             this.LblScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblScore.Click += new System.EventHandler(this.LblScore_Click);
             // 
             // label3
             // 
@@ -166,12 +167,10 @@ namespace gameparkerjames
             // 
             // TmrBullet
             // 
-            this.TmrBullet.Enabled = true;
             this.TmrBullet.Tick += new System.EventHandler(this.TmrBullet_Tick);
             // 
             // TmrPlayer
             // 
-            this.TmrPlayer.Enabled = true;
             this.TmrPlayer.Interval = 50;
             this.TmrPlayer.Tick += new System.EventHandler(this.TmrPlayer_Tick);
             // 
